@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-6"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-6">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Description"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#manageSujet"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#descriptionDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#titreDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#createurDe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sujet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Compagnie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#dateCreationDe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Document"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#creePar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Auteur"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Date"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Titre"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aDocument"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Manager"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Categorie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Auteur"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#createurDe"/>
+            <Class IRI="#Document"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Categorie"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#aDocument"/>
+            <Class IRI="#Document"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Date"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#dateCreationDe"/>
+            <Class IRI="#Date"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Description"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#descriptionDe"/>
+            <Class IRI="#Document"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Document"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#creePar"/>
+            <Class IRI="#Auteur"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Manager"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#manageSujet"/>
+            <Class IRI="#Sujet"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sujet"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne"/>
+            <Class IRI="#Document"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Titre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#titreDe"/>
+            <Class IRI="#Document"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aDocument"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#createurDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#creePar"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#dateCreationDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#descriptionDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#manageSujet"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#titreDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#createurDe"/>
+        <ObjectProperty IRI="#creePar"/>
+    </InverseObjectProperties>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

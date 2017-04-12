@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#"
+     xml:base="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#document -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#document">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#etape -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#etape">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#responsable -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#responsable">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#debut -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#debut">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#duree -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#duree">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#fin -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#fin">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#nom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#nom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Document -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Document"/>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Etape -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Etape">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#document"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Document"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#responsable"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Responsable"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#debut"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#duree"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#fin"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#nom"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Formation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Formation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#etape"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Etape"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Responsable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Responsable"/>
+    
+
+
+    <!-- http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Type_de_changement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Type_de_changement">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#concerne"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#Formation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/david/ontologies/2017/3/untitled-ontology-3#nom"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
