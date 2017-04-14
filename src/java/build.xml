@@ -1,0 +1,44 @@
+<project default="all">
+
+	<target name="all">
+		<path id="external.apache.collection">
+			<pathelement location="lib/poi-3.15/lib/commons-collections4-4.1.jar"/>
+		</path>
+		<path id="external.apache.jena.iri">
+			<pathelement location="lib/apache-jena-3.2.0/lib/jena-iri-3.2.0.jar"/>
+		</path>
+		<path id="external.apache.jena.core">
+			<pathelement location="lib/apache-jena-3.2.0/lib/jena-core-3.2.0.jar"/>
+		</path>
+		<path id="external.apache.poi">
+			<pathelement location="lib/poi-3.15/poi-3.15.jar"/>
+		</path>
+		<path id="external.apache.poi.xml">
+			<pathelement location="lib/poi-3.15/poi-ooxml-3.15.jar"/>
+		</path>
+		<path id="external.apache.poi.xml.schemas">
+			<pathelement location="lib/poi-3.15/poi-ooxml-schemas-3.15.jar"/>
+		</path>
+		<path id="external.apache.poi.xml.beans">
+			<pathelement location="lib/poi-3.15/ooxml-lib/xmlbeans-2.6.0.jar"/>
+		</path>
+
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin">
+		<classpath>
+			<path refid="external.apache.collection" />
+			<path refid="external.apache.jena.iri" />
+			<path refid="external.apache.jena.core" />
+			<path refid="external.apache.poi" />
+			<path refid="external.apache.poi.xml" />
+			<path refid="external.apache.poi.xml.schemas" />
+			<path refid="external.apache.poi.xml.beans" />
+		</classpath>
+		</javac>
+	</target>
+
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+
+</project>

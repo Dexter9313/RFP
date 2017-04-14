@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.ontologie.fr/monOntologie#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.ontologie.fr/monOntologie#"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Manager"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Title"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Description"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Document"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Company"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Category"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Subject"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Auteur"/>
+  <owl:Class rdf:about="http://www.ontologie.fr/monOntologie#Date"/>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#hasDocument">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Category"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#hasasetof">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Company"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#DescriptionOf">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Description"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#ManageSubject">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Subject"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Manager"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#CreationDateOf">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Date"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#TitleOf">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Title"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#Concern">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Subject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#CreatorOf">
+    <rdfs:range rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Auteur"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.ontologie.fr/monOntologie#CreatedBy">
+    <rdfs:domain rdf:resource="http://www.ontologie.fr/monOntologie#Document"/>
+  </owl:ObjectProperty>
+  <j.0:Auteur rdf:about="http://www.ontologie.fr/monOntologie#Oumaima Ajmi"/>
+  <j.0:Company rdf:about="http://www.ontologie.fr/monOntologie#null">
+    <rdf:type rdf:resource="http://www.ontologie.fr/monOntologie#Manager"/>
+    <rdf:type rdf:resource="http://www.ontologie.fr/monOntologie#Category"/>
+    <rdf:type rdf:resource="http://www.ontologie.fr/monOntologie#Subject"/>
+    <rdf:type rdf:resource="http://www.ontologie.fr/monOntologie#Description"/>
+  </j.0:Company>
+  <j.0:Title rdf:about="http://www.ontologie.fr/monOntologie#Moyenne par étudiant "/>
+  <j.0:Document rdf:about="http://www.ontologie.fr/monOntologie#uploads/Moyennes pour CSI 2016 - 2016.12.12.xlsx"/>
+</rdf:RDF>
