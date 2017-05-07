@@ -102,20 +102,4 @@ public class ExcelFileExtractor
 		}
 		fis.close();
 	}
-
-	public static void main(String[] arg)
-	{
-		try
-		{
-			ExcelFileExtractor newtruc
-			    = new ExcelFileExtractor("Ressources/Diagnostics.xlsx");
-			newtruc.MetadataExtractor();
-			System.out.println(newtruc.Keywords);
-		}
-		catch(IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }

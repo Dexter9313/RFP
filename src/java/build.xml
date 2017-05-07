@@ -10,6 +10,12 @@
 		<path id="external.apache.jena.core">
 			<pathelement location="lib/apache-jena-3.2.0/lib/jena-core-3.2.0.jar"/>
 		</path>
+		<path id="external.apache.jena.arq">
+			<pathelement location="lib/apache-jena-3.2.0/lib/jena-arq-3.2.0.jar"/>
+		</path>
+		<path id="external.apache.jena.tdb">
+			<pathelement location="lib/apache-jena-3.2.0/lib/jena-tdb-3.2.0.jar"/>
+		</path>
 		<path id="external.apache.poi">
 			<pathelement location="lib/poi-3.15/poi-3.15.jar"/>
 		</path>
@@ -29,6 +35,8 @@
 			<path refid="external.apache.collection" />
 			<path refid="external.apache.jena.iri" />
 			<path refid="external.apache.jena.core" />
+			<path refid="external.apache.jena.arq" />
+			<path refid="external.apache.jena.tdb" />
 			<path refid="external.apache.poi" />
 			<path refid="external.apache.poi.xml" />
 			<path refid="external.apache.poi.xml.schemas" />

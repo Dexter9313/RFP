@@ -83,6 +83,6 @@ public class ExcelToOnto
 	{
 		ExcelToOnto Testfile = new ExcelToOnto(args[0]);
 		Testfile.ExcelOntoConv("http://www.ontologie.fr/monOntologie#",
-		                       args[0] + ".owl");
+		                       args[0] + ".rdf");
 	}
 }
