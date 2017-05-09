@@ -42,7 +42,7 @@ public abstract class Onto
 	//left out comments are legacy ways of doing, soon to be deleted
 	public void persist(String fileName)
 	{
-		FileOutputStream fichierSortie = null;
+		/*FileOutputStream fichierSortie = null;
 
 		try
 		{
@@ -51,7 +51,7 @@ public abstract class Onto
 		catch(FileNotFoundException ex)
 		{
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		}*/
 
 
 		//ontologie.write(fichierSortie, "N3");
