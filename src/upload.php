@@ -29,7 +29,7 @@ if ($uploadOk == 0) {
         echo "The resource ". basename( $_FILES["fileToUpload"]["name"]). " has been referenced.";
 		echo '<form action="index.php"><input type="submit" value="Go Back" /></form>';
         //exec('java -cp java/bin/:java/lib/poi-3.15/poi-3.15.jar:java/lib/poi-3.15/poi-ooxml-3.15.jar:java/lib/poi-3.15/poi-ooxml-schemas-3.15.jar:java/lib/poi-3.15/ooxml-lib/xmlbeans-2.6.0.jar:java/lib/apache-jena-3.2.0/lib/jena-core-3.2.0.jar:java/lib/apache-jena-3.2.0/lib/jena-iri-3.2.0.jar:java/lib/poi-3.15/lib/commons-collections4-4.1.jar ontotest.ExcelToOnto "uploads/' . basename( $_FILES["fileToUpload"]["name"]) . '"');
-        exec('java -cp "java/bin/:java/lib/poi-3.15/*:java/lib/apache-jena-3.2.0/lib/*:java/lib/poi-3.15/ooxml-lib/*:java/lib/poi-3.15/lib/*" ontotest.ExcelToOnto "uploads/' . basename( $_FILES["fileToUpload"]["name"]) . '"');
+        exec('java -cp "java/bin/:java/lib/poi-3.15/*:java/lib/apache-jena-3.2.0/lib/*:java/lib/poi-3.15/ooxml-lib/*:java/lib/poi-3.15/lib/*" rfp.ResourceToOnto "uploads/' . basename( $_FILES["fileToUpload"]["name"]) . '"');
         unlink($target_file);
     } else {
         echo "Sorry, there was an error uploading your resource.";
