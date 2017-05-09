@@ -21,11 +21,8 @@ import org.apache.jena.query.ReadWrite;
 
 //Converts an excel file to ontology
 
-public class OntoExcel
+public class OntoExcel extends Onto
 {
-	OntModel ontologie;
-	String namespace;
-
 	String DocumentCreator;
 	String Creationdate;
 	String LastModif;
@@ -40,11 +37,9 @@ public class OntoExcel
 	String Manager;
 	String FileExcelInit;
 
-	public OntoExcel(String NameSpace, String FileExcel)
+	public OntoExcel(String namespace, String FileExcel)
 	{
-		ontologie = ModelFactory.createOntologyModel();
-		namespace = NameSpace;
-		ontologie.createOntology(namespace);
+		super(namespace);
 
 		FileExcelInit = FileExcel;
 		try
@@ -72,7 +67,8 @@ public class OntoExcel
 		}
 	}
 
-	public void ExcelOntoConv(String FileName)
+	@Override
+	protected void convert()
 	{
 		CreateNewExceClass("Document", "CreatedBy", "Document", "no");
 		CreateNewExceClass("Auteur", "CreatorOf", "Auteur", "Document");
@@ -99,8 +95,6 @@ public class OntoExcel
 		CreatNewExcelIndiv("Category", Category);
 		CreatNewExcelIndiv("Manager", Manager);
 		CreatNewExcelIndiv("Company", Company);
-
-		OntoExcellFile(FileName);
 	}
 
 	public void CreateNewExceClass(String ClassName, String Prop, String Dom,
@@ -125,42 +119,4 @@ public class OntoExcel
 		ontologie.createIndividual(namespace + Indiv, Cname);
 	}
 
-	public void OntoExcellFile(String FileName)
-	{
-		/*FileOutputStream fichierSortie = null;
-
-		try
-		{
-			fichierSortie = new FileOutputStream(new File(FileName));
-		}
-		catch(FileNotFoundException ex)
-		{
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-		}*/
-
-
-		//ontologie.write(fichierSortie, "N3");
-		//GraphTripleStore graph = new GraphTripleStore(null);
-		Dataset dataset = TDBFactory.createDataset("uploads/dataset");
-		dataset.begin(ReadWrite.WRITE);
-		dataset.addNamedModel("foo", ontologie);
-		dataset.commit();
-		dataset.end();
-		/*try
-		{
-			for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
-			{
-				fichierSortie.write(s.toString().getBytes());
-				fichierSortie.write("\n".getBytes());
-
-				//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
-			}
-			fichierSortie.close();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}*/
-	
-	}
 }

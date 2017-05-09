@@ -9,6 +9,6 @@ public class ResourceToOnto
 	{
 		//TODO : decide which is resource type here
 		OntoExcel onto = new OntoExcel("http://www.ontologie.fr/monOntologie#",args[0]);
-		onto.ExcelOntoConv(args[0] + ".rdf");
+		onto.persist(args[0] + ".rdf");
 	}
 }
