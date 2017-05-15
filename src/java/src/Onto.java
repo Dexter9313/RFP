@@ -31,8 +31,6 @@ public abstract class Onto
 			ontologie = ModelFactory.createOntologyModel();
 			ontologie.createOntology(namespace);
 			this.namespace = namespace;
-
-			convert();
 		}
 
 		//actual method which does the convertion rsc->onto

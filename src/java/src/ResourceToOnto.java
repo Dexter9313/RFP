@@ -12,43 +12,52 @@ public class ResourceToOnto
      * args[1] = resource path */
     public static void main(String[] args)
     {
-        if(args[0] == "--excel")
+        System.out.println(args[0]);
+        if(args[0].equals("--excel"))
         {
             OntoExcel onto = new OntoExcel("http://www.ontologie.fr/monOntologie#",
                                            args[1]);
+            onto.convert();
             onto.persist(args[1] + ".rdf");
         }
-        else if(args[0] == "--db")
+        else if(args[0].equals("--db"))
         {
             try {
                 Scanner scanner = new Scanner(new File(args[1]));
-                String url = scanner.nextLine();
+                String url = "jdbc:mysql://" + scanner.nextLine();
+                System.out.println(url);
                 String userName = scanner.nextLine();
+                System.out.println(userName);
                 String password = scanner.nextLine();
+                System.out.println(password);
                 scanner.close();
+
+                OntoDB onto = new OntoDB("http://www.ontologie.fr/monOntologie#",
+                                         url,
+                                         userName,
+                                         password);
+                onto.convert();
+                onto.persist(args[1] + ".rdf");
             }
             catch(FileNotFoundException e) {
                 e.printStackTrace();
             }
 
-            OntoDB onto = new OntoDB("http://www.ontologie.fr/monOntologie#",
-                                     url,
-                                     userName,
-                                     password);
-            onto.persist(args[1] + ".rdf");
         }
-        else if(args[0] == "--html")
+        else if(args[0].equals("--html"))
         {
             /* TODO : implement OntoHTML */
             String foo = args[0];
         }
-        else if(args[0] == "--service")
+        else if(args[0].equals("--service"))
         {
             /* TODO : implement OntoService */
             String foo = args[0];
         }
     }
 }
+
+
 
 
 

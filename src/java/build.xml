@@ -28,6 +28,9 @@
 		<path id="external.apache.poi.xml.beans">
 			<pathelement location="lib/poi-3.15/ooxml-lib/xmlbeans-2.6.0.jar"/>
 		</path>
+                <path id="external.sql-connector">
+                  <pathelement location="lib/mysql-connector-java-5.1.42/mysql-connector-java-5.1.4-bin.jar" />
+                </path>
 
 		<mkdir dir="bin"/>
 		<javac srcdir="src" destdir="bin">
@@ -40,7 +43,8 @@
 			<path refid="external.apache.poi" />
 			<path refid="external.apache.poi.xml" />
 			<path refid="external.apache.poi.xml.schemas" />
-			<path refid="external.apache.poi.xml.beans" />
+                        <path refid="external.apache.poi.xml.beans" />
+                        <path refid="external.sql-connector" />
 		</classpath>
 		</javac>
 	</target>
