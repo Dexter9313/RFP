@@ -17,7 +17,7 @@
     <input type="text" name="user" id="user"/><br/>
 
     <label for"password"> password : </label>
-    <input type="password" value="password" name="password"/><br/>
+    <input type="password" name="password"/><br/>
 
     <input type="submit" value="Reference This Resource" name="submit">
 </form>
