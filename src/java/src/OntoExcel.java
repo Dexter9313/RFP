@@ -23,100 +23,102 @@ import org.apache.jena.query.ReadWrite;
 
 public class OntoExcel extends Onto
 {
-	String DocumentCreator;
-	String Creationdate;
-	String LastModif;
-	String LastModifC;
-	String Description;
-	String Keywords;
-	String Title;
-	String Subject;
-	String Category;
-	String Company;
-	String Template;
-	String Manager;
-	String FileExcelInit;
+		String DocumentCreator;
+		String Creationdate;
+		String LastModif;
+		String LastModifC;
+		String Description;
+		String Keywords;
+		String Title;
+		String Subject;
+		String Category;
+		String Company;
+		String Template;
+		String Manager;
+		String FileExcelInit;
 
-	public OntoExcel(String namespace, String FileExcel)
-	{
-		super(namespace);
-
-		FileExcelInit = FileExcel;
-		try
+		public OntoExcel(String namespace, String FileExcel)
 		{
-			ExcelFileExtractor ExcelFile
-			    = new ExcelFileExtractor(FileExcelInit);
-			ExcelFile.MetadataExtractor();
-			DocumentCreator = ExcelFile.DocumentCreator;
-			Creationdate    = ExcelFile.Creationdate;
-			LastModif       = ExcelFile.LastModif;
-			LastModifC      = ExcelFile.LastModifC;
-			Description     = ExcelFile.Description;
-			Keywords        = ExcelFile.Keywords;
-			Title           = ExcelFile.Title;
-			Subject         = ExcelFile.Subject;
-			Category        = ExcelFile.Company;
-			Company         = ExcelFile.Company;
-			Template        = ExcelFile.Template;
-			Manager         = ExcelFile.Manager;
+			super(namespace);
+
+			FileExcelInit = FileExcel;
+
+			try
+			{
+				ExcelFileExtractor ExcelFile
+					= new ExcelFileExtractor(FileExcelInit);
+				ExcelFile.MetadataExtractor();
+				DocumentCreator = ExcelFile.DocumentCreator;
+				Creationdate    = ExcelFile.Creationdate;
+				LastModif       = ExcelFile.LastModif;
+				LastModifC      = ExcelFile.LastModifC;
+				Description     = ExcelFile.Description;
+				Keywords        = ExcelFile.Keywords;
+				Title           = ExcelFile.Title;
+				Subject         = ExcelFile.Subject;
+				Category        = ExcelFile.Company;
+				Company         = ExcelFile.Company;
+				Template        = ExcelFile.Template;
+				Manager         = ExcelFile.Manager;
+			}
+			catch(IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		catch(IOException e)
+
+		@Override
+		protected void convert()
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			CreateNewExceClass("Document", "CreatedBy", "Document", "no");
+			CreateNewExceClass("Auteur", "CreatorOf", "Auteur", "Document");
+			// Onto.CreateNewExceClass("Document", "ModifiedBy", "Document",
+			// "Auteur");
+			CreateNewExceClass("Title", "TitleOf", "Title", "Document");
+			CreateNewExceClass("Description", "DescriptionOf", "Description",
+							   "Document");
+			CreateNewExceClass("Subject", "Concern", "Subject", "Document");
+			CreateNewExceClass("Category", "hasDocument", "Category",
+							   "Document");
+			CreateNewExceClass("Manager", "ManageSubject", "Manager",
+							   "Subject");
+			CreateNewExceClass("Company", "hasasetof", "Company", "Document");
+			// Onto.CreateNewExceClass("Company", "hasasetof", "Company",
+			// "Template");
+			CreateNewExceClass("Date", "CreationDateOf", "Date", "Document");
+
+			CreatNewExcelIndiv("Document", FileExcelInit);
+			CreatNewExcelIndiv("Auteur", DocumentCreator);
+			CreatNewExcelIndiv("Title", Title);
+			CreatNewExcelIndiv("Description", Description);
+			CreatNewExcelIndiv("Subject", Subject);
+			CreatNewExcelIndiv("Category", Category);
+			CreatNewExcelIndiv("Manager", Manager);
+			CreatNewExcelIndiv("Company", Company);
 		}
-	}
 
-	@Override
-	protected void convert()
-	{
-		CreateNewExceClass("Document", "CreatedBy", "Document", "no");
-		CreateNewExceClass("Auteur", "CreatorOf", "Auteur", "Document");
-		// Onto.CreateNewExceClass("Document", "ModifiedBy", "Document",
-		// "Auteur");
-		CreateNewExceClass("Title", "TitleOf", "Title", "Document");
-		CreateNewExceClass("Description", "DescriptionOf", "Description",
-		                        "Document");
-		CreateNewExceClass("Subject", "Concern", "Subject", "Document");
-		CreateNewExceClass("Category", "hasDocument", "Category",
-		                        "Document");
-		CreateNewExceClass("Manager", "ManageSubject", "Manager",
-		                        "Subject");
-		CreateNewExceClass("Company", "hasasetof", "Company", "Document");
-		// Onto.CreateNewExceClass("Company", "hasasetof", "Company",
-		// "Template");
-		CreateNewExceClass("Date", "CreationDateOf", "Date", "Document");
-
-		CreatNewExcelIndiv("Document", FileExcelInit);
-		CreatNewExcelIndiv("Auteur", DocumentCreator);
-		CreatNewExcelIndiv("Title", Title);
-		CreatNewExcelIndiv("Description", Description);
-		CreatNewExcelIndiv("Subject", Subject);
-		CreatNewExcelIndiv("Category", Category);
-		CreatNewExcelIndiv("Manager", Manager);
-		CreatNewExcelIndiv("Company", Company);
-	}
-
-	public void CreateNewExceClass(String ClassName, String Prop, String Dom,
-	                               String Ran)
-	{
-		ontologie.createClass(namespace + ClassName);
-		ObjectProperty newProp
-		    = ontologie.createObjectProperty(namespace + Prop);
-		OntClass Domain = ontologie.getOntClass(namespace + Dom);
-		// set Domain and Rang
-		newProp.setDomain(Domain);
-		if(Ran != "no")
+		public void CreateNewExceClass(String ClassName, String Prop, String Dom,
+									   String Ran)
 		{
-			OntClass Rang = ontologie.getOntClass(namespace + Ran);
-			newProp.setRange(Rang);
-		}
-	}
+			ontologie.createClass(namespace + ClassName);
+			ObjectProperty newProp
+				= ontologie.createObjectProperty(namespace + Prop);
+			OntClass Domain = ontologie.getOntClass(namespace + Dom);
+			// set Domain and Rang
+			newProp.setDomain(Domain);
 
-	public void CreatNewExcelIndiv(String ClassName, String Indiv)
-	{
-		OntClass Cname = ontologie.getOntClass(namespace + ClassName);
-		ontologie.createIndividual(namespace + Indiv, Cname);
-	}
+			if(Ran != "no")
+			{
+				OntClass Rang = ontologie.getOntClass(namespace + Ran);
+				newProp.setRange(Rang);
+			}
+		}
+
+		public void CreatNewExcelIndiv(String ClassName, String Indiv)
+		{
+			OntClass Cname = ontologie.getOntClass(namespace + ClassName);
+			ontologie.createIndividual(namespace + Indiv, Cname);
+		}
 
 }
