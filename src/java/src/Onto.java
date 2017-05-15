@@ -23,59 +23,59 @@ import org.apache.jena.query.ReadWrite;
 
 public abstract class Onto
 {
-	OntModel ontologie;
-	String namespace;
+		OntModel ontologie;
+		String namespace;
 
-	public Onto(String namespace)
-	{
-		ontologie = ModelFactory.createOntologyModel();
-		ontologie.createOntology(namespace);
-		this.namespace = namespace;
-
-		convert();
-	}
-
-	//actual method which does the convertion rsc->onto
-	protected abstract void convert();
-
-
-	//left out comments are legacy ways of doing, soon to be deleted
-	public void persist(String fileName)
-	{
-		/*FileOutputStream fichierSortie = null;
-
-		try
+		public Onto(String namespace)
 		{
-			fichierSortie = new FileOutputStream(new File(fileName));
+			ontologie = ModelFactory.createOntologyModel();
+			ontologie.createOntology(namespace);
+			this.namespace = namespace;
+
+			convert();
 		}
-		catch(FileNotFoundException ex)
-		{
-			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-		}*/
+
+		//actual method which does the convertion rsc->onto
+		protected abstract void convert();
 
 
-		//ontologie.write(fichierSortie, "N3");
-		//GraphTripleStore graph = new GraphTripleStore(null);
-		Dataset dataset = TDBFactory.createDataset("uploads/dataset");
-		dataset.begin(ReadWrite.WRITE);
-		dataset.addNamedModel("foo", ontologie);
-		dataset.commit();
-		dataset.end();
-		/*try
+		//left out comments are legacy ways of doing, soon to be deleted
+		public void persist(String fileName)
 		{
-			for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
+			/*FileOutputStream fichierSortie = null;
+
+			try
 			{
-				fichierSortie.write(s.toString().getBytes());
-				fichierSortie.write("\n".getBytes());
-
-				//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
+				fichierSortie = new FileOutputStream(new File(fileName));
 			}
-			fichierSortie.close();
+			catch(FileNotFoundException ex)
+			{
+				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+			}*/
+
+
+			//ontologie.write(fichierSortie, "N3");
+			//GraphTripleStore graph = new GraphTripleStore(null);
+			Dataset dataset = TDBFactory.createDataset("uploads/dataset");
+			dataset.begin(ReadWrite.WRITE);
+			dataset.addNamedModel("foo", ontologie);
+			dataset.commit();
+			dataset.end();
+			/*try
+			{
+				for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
+				{
+					fichierSortie.write(s.toString().getBytes());
+					fichierSortie.write("\n".getBytes());
+
+					//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
+				}
+				fichierSortie.close();
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}*/
+
 		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}*/
-	
-	}
 }
