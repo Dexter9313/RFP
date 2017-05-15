@@ -1,0 +1,7 @@
+--style=break
+-T4
+-C -S -N -L -w -Y
+-f -p -U
+-k1
+-xC80 -xL
+-z2
