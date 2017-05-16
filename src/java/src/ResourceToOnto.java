@@ -25,11 +25,8 @@ public class ResourceToOnto
             try {
                 Scanner scanner = new Scanner(new File(args[1]));
                 String url = "jdbc:mysql://" + scanner.nextLine();
-                System.out.println(url);
                 String userName = scanner.nextLine();
-                System.out.println(userName);
                 String password = scanner.nextLine();
-                System.out.println(password);
                 scanner.close();
 
                 OntoDB onto = new OntoDB("http://www.ontologie.fr/monOntologie#",
