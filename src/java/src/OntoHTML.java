@@ -21,6 +21,8 @@ import org.apache.jena.query.ReadWrite;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.html.HtmlParser;
 import org.apache.tika.metadata.TikaCoreProperties;
+import org.xml.sax.helpers.DefaultHandler;
+import org.apache.tika.parser.ParseContext;
 
 
 //Converts an excel file to ontology
@@ -56,7 +58,7 @@ public class OntoHTML extends Onto
 			FileInputStream fis = new FileInputStream(FileHTML);
 			Metadata metadata = new Metadata();
 			HtmlParser htmlParser = new HtmlParser();
-			htmlParser.parse(fis, null, metadata, null);
+			htmlParser.parse(fis, new DefaultHandler(), metadata, new ParseContext());
 			fis.close();
 
 			String Contributor = metadata.get(TikaCoreProperties.CONTRIBUTOR);
@@ -87,7 +89,7 @@ public class OntoHTML extends Onto
 	protected void convert()
 	{
 		CreateNewClass("Document", "CreatedBy", "Document", "no");
-		CreateNewClass("Coverage", "CoveredBy", "Converage", "Document");
+		CreateNewClass("Coverage", "CoveredBy", "Coverage", "Document");
 		CreateNewClass("Author", "CreatorOf", "Author", "Document");
 		CreateNewClass("Date", "CreationDateOf", "Date", "Document");
 		CreateNewClass("Description", "DescriptionOf", "Description", "Document");

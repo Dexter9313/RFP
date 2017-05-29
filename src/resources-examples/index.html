@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><link rel="stylesheet" type="text/css" href="index_fichiers/socialwidgets.css"></head><body onload="showExcel()">
+
+<script type="text/javascript">
+function showExcel()
+{
+	document.getElementById("excel_div").style.display = 'block';
+
+	document.getElementById("db_div").style.display = 'none';
+	document.getElementById("html_div").style.display = 'none';
+	document.getElementById("service_div").style.display = 'none';
+}
+function showDB()
+{
+	document.getElementById("db_div").style.display = 'block';
+
+	document.getElementById("excel_div").style.display = 'none';
+	document.getElementById("html_div").style.display = 'none';
+	document.getElementById("service_div").style.display = 'none';
+}
+function showHTML()
+{
+	document.getElementById("html_div").style.display = 'block';
+
+	document.getElementById("excel_div").style.display = 'none';
+	document.getElementById("db_div").style.display = 'none';
+	document.getElementById("service_div").style.display = 'none';
+}
+function showService()
+{
+	document.getElementById("service_div").style.display = 'block';
+
+	document.getElementById("excel_div").style.display = 'none';
+	document.getElementById("db_div").style.display = 'none';
+	document.getElementById("html_div").style.display = 'none';
+}
+</script>
+
+<input name="resource-type" value="excel" onclick="showExcel()" type="radio"> Excel
+<input name="resource-type" value="db" onclick="showDB()" type="radio"> DataBase
+<input name="resource-type" value="html" onclick="showHTML()" checked="checked" type="radio"> HTML
+<input name="resource-type" value="service" onclick="showService()" type="radio"> Service
+
+<!-- Excel -->
+	<div id="excel_div" style="display: none;">
+	<form action="uploadExcel.php" method="post" enctype="multipart/form-data">
+	Select resource to reference:<br>
+	<input name="fileToUpload" id="fileToUpload" type="file"><br>
+
+	<input value="Reference This Resource" name="submit" type="submit">
+
+	</form>
+	</div>
+
+
+<!-- DB -->
+	<div id="db_div" style="display: none;">
+	<form action="uploadDB.php" method="post" enctype="multipart/form-data">
+	Enter login and password:<br>
+	<label for"url"="" id="url_label"> url : </label>
+	<input name="url" id="url" type="text"><br>
+
+	<label for"user"="" id="user_label"> userName : </label>
+	<input name="user" id="user" type="text"><br>
+
+	<label for"password"="" id="password_label"> password : </label>
+	<input name="password" id="password" type="password"><br>
+	<input value="Reference This Resource" name="submit" type="submit">
+
+	</form>
+	</div>
+
+<!-- HTML -->
+	<div id="html_div" style="display: block;">
+	<form action="uploadHTML.php" method="post" enctype="multipart/form-data">
+	Select HTML resource to reference:<br>
+	<input name="fileToUpload" id="fileToUpload" type="file"><br>
+	<input value="Reference This Resource" name="submit" type="submit">
+
+	</form>
+	</div>
+
+<!-- Service -->
+	<div id="service_div" style="display: none;">
+	</div>
+
+
+
+
+</body></html>

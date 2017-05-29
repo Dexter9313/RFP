@@ -44,8 +44,10 @@ public class ResourceToOnto
 		}
 		else if(args[0].equals("--html"))
 		{
-			/* TODO : implement OntoHTML */
-			String foo = args[0];
+			OntoHTML onto = new OntoHTML("http://www.ontologie.fr/monOntologie#",
+										   args[1]);
+			onto.convert();
+			onto.persist(args[1] + ".rdf");
 		}
 		else if(args[0].equals("--service"))
 		{
