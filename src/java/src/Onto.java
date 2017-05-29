@@ -53,7 +53,7 @@ public abstract class Onto
 		}
 	}
 
-	protected void CreatNewIndiv(String ClassName, String Indiv)
+	protected void CreateNewIndiv(String ClassName, String Indiv)
 	{
 		OntClass Cname = ontologie.getOntClass(namespace + ClassName);
 		ontologie.createIndividual(namespace + Indiv, Cname);
