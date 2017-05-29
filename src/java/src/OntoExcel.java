@@ -71,54 +71,31 @@ public class OntoExcel extends Onto
 		@Override
 		protected void convert()
 		{
-			CreateNewExceClass("Document", "CreatedBy", "Document", "no");
-			CreateNewExceClass("Auteur", "CreatorOf", "Auteur", "Document");
+			CreateNewClass("Document", "CreatedBy", "Document", "no");
+			CreateNewClass("Auteur", "CreatorOf", "Auteur", "Document");
 			// Onto.CreateNewExceClass("Document", "ModifiedBy", "Document",
 			// "Auteur");
-			CreateNewExceClass("Title", "TitleOf", "Title", "Document");
-			CreateNewExceClass("Description", "DescriptionOf", "Description",
+			CreateNewClass("Title", "TitleOf", "Title", "Document");
+			CreateNewClass("Description", "DescriptionOf", "Description",
 							   "Document");
-			CreateNewExceClass("Subject", "Concern", "Subject", "Document");
-			CreateNewExceClass("Category", "hasDocument", "Category",
+			CreateNewClass("Subject", "Concern", "Subject", "Document");
+			CreateNewClass("Category", "hasDocument", "Category",
 							   "Document");
-			CreateNewExceClass("Manager", "ManageSubject", "Manager",
+			CreateNewClass("Manager", "ManageSubject", "Manager",
 							   "Subject");
-			CreateNewExceClass("Company", "hasasetof", "Company", "Document");
+			CreateNewClass("Company", "hasasetof", "Company", "Document");
 			// Onto.CreateNewExceClass("Company", "hasasetof", "Company",
 			// "Template");
-			CreateNewExceClass("Date", "CreationDateOf", "Date", "Document");
+			CreateNewClass("Date", "CreationDateOf", "Date", "Document");
 
-			CreatNewExcelIndiv("Document", FileExcelInit);
-			CreatNewExcelIndiv("Auteur", DocumentCreator);
-			CreatNewExcelIndiv("Title", Title);
-			CreatNewExcelIndiv("Description", Description);
-			CreatNewExcelIndiv("Subject", Subject);
-			CreatNewExcelIndiv("Category", Category);
-			CreatNewExcelIndiv("Manager", Manager);
-			CreatNewExcelIndiv("Company", Company);
-		}
-
-		public void CreateNewExceClass(String ClassName, String Prop, String Dom,
-									   String Ran)
-		{
-			ontologie.createClass(namespace + ClassName);
-			ObjectProperty newProp
-				= ontologie.createObjectProperty(namespace + Prop);
-			OntClass Domain = ontologie.getOntClass(namespace + Dom);
-			// set Domain and Rang
-			newProp.setDomain(Domain);
-
-			if(Ran != "no")
-			{
-				OntClass Rang = ontologie.getOntClass(namespace + Ran);
-				newProp.setRange(Rang);
-			}
-		}
-
-		public void CreatNewExcelIndiv(String ClassName, String Indiv)
-		{
-			OntClass Cname = ontologie.getOntClass(namespace + ClassName);
-			ontologie.createIndividual(namespace + Indiv, Cname);
+			CreatNewIndiv("Document", FileExcelInit);
+			CreatNewIndiv("Auteur", DocumentCreator);
+			CreatNewIndiv("Title", Title);
+			CreatNewIndiv("Description", Description);
+			CreatNewIndiv("Subject", Subject);
+			CreatNewIndiv("Category", Category);
+			CreatNewIndiv("Manager", Manager);
+			CreatNewIndiv("Company", Company);
 		}
 
 }

@@ -36,6 +36,28 @@ public abstract class Onto
 		//actual method which does the convertion rsc->onto
 		protected abstract void convert();
 
+		protected void CreateNewClass(String ClassName, String Prop, String Dom,
+									   String Ran)
+		{
+			ontologie.createClass(namespace + ClassName);
+			ObjectProperty newProp
+				= ontologie.createObjectProperty(namespace + Prop);
+			OntClass Domain = ontologie.getOntClass(namespace + Dom);
+			// set Domain and Rang
+			newProp.setDomain(Domain);
+
+			if(Ran != "no")
+			{
+				OntClass Rang = ontologie.getOntClass(namespace + Ran);
+				newProp.setRange(Rang);
+			}
+		}
+
+		protected void CreatNewIndiv(String ClassName, String Indiv)
+		{
+			OntClass Cname = ontologie.getOntClass(namespace + ClassName);
+			ontologie.createIndividual(namespace + Indiv, Cname);
+		}
 
 		//left out comments are legacy ways of doing, soon to be deleted
 		public void persist(String fileName)
@@ -76,4 +98,5 @@ public abstract class Onto
 			}*/
 
 		}
+
 }
