@@ -23,80 +23,80 @@ import org.apache.jena.query.ReadWrite;
 
 public abstract class Onto
 {
-		OntModel ontologie;
-		String namespace;
+	OntModel ontologie;
+	String namespace;
 
-		public Onto(String namespace)
+	public Onto(String namespace)
+	{
+		ontologie = ModelFactory.createOntologyModel();
+		ontologie.createOntology(namespace);
+		this.namespace = namespace;
+	}
+
+	//actual method which does the convertion rsc->onto
+	protected abstract void convert();
+
+	protected void CreateNewClass(String ClassName, String Prop, String Dom,
+								  String Ran)
+	{
+		ontologie.createClass(namespace + ClassName);
+		ObjectProperty newProp
+			= ontologie.createObjectProperty(namespace + Prop);
+		OntClass Domain = ontologie.getOntClass(namespace + Dom);
+		// set Domain and Rang
+		newProp.setDomain(Domain);
+
+		if(Ran != "no")
 		{
-			ontologie = ModelFactory.createOntologyModel();
-			ontologie.createOntology(namespace);
-			this.namespace = namespace;
+			OntClass Rang = ontologie.getOntClass(namespace + Ran);
+			newProp.setRange(Rang);
 		}
+	}
 
-		//actual method which does the convertion rsc->onto
-		protected abstract void convert();
+	protected void CreatNewIndiv(String ClassName, String Indiv)
+	{
+		OntClass Cname = ontologie.getOntClass(namespace + ClassName);
+		ontologie.createIndividual(namespace + Indiv, Cname);
+	}
 
-		protected void CreateNewClass(String ClassName, String Prop, String Dom,
-									   String Ran)
+	//left out comments are legacy ways of doing, soon to be deleted
+	public void persist(String fileName)
+	{
+		/*FileOutputStream fichierSortie = null;
+
+		try
 		{
-			ontologie.createClass(namespace + ClassName);
-			ObjectProperty newProp
-				= ontologie.createObjectProperty(namespace + Prop);
-			OntClass Domain = ontologie.getOntClass(namespace + Dom);
-			// set Domain and Rang
-			newProp.setDomain(Domain);
+			fichierSortie = new FileOutputStream(new File(fileName));
+		}
+		catch(FileNotFoundException ex)
+		{
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+		}*/
 
-			if(Ran != "no")
+
+		//ontologie.write(fichierSortie, "N3");
+		//GraphTripleStore graph = new GraphTripleStore(null);
+		Dataset dataset = TDBFactory.createDataset("uploads/dataset");
+		dataset.begin(ReadWrite.WRITE);
+		dataset.addNamedModel("foo", ontologie);
+		dataset.commit();
+		dataset.end();
+		/*try
+		{
+			for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
 			{
-				OntClass Rang = ontologie.getOntClass(namespace + Ran);
-				newProp.setRange(Rang);
+				fichierSortie.write(s.toString().getBytes());
+				fichierSortie.write("\n".getBytes());
+
+				//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
 			}
+			fichierSortie.close();
 		}
-
-		protected void CreatNewIndiv(String ClassName, String Indiv)
+		catch(IOException e)
 		{
-			OntClass Cname = ontologie.getOntClass(namespace + ClassName);
-			ontologie.createIndividual(namespace + Indiv, Cname);
-		}
+			e.printStackTrace();
+		}*/
 
-		//left out comments are legacy ways of doing, soon to be deleted
-		public void persist(String fileName)
-		{
-			/*FileOutputStream fichierSortie = null;
-
-			try
-			{
-				fichierSortie = new FileOutputStream(new File(fileName));
-			}
-			catch(FileNotFoundException ex)
-			{
-				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-			}*/
-
-
-			//ontologie.write(fichierSortie, "N3");
-			//GraphTripleStore graph = new GraphTripleStore(null);
-			Dataset dataset = TDBFactory.createDataset("uploads/dataset");
-			dataset.begin(ReadWrite.WRITE);
-			dataset.addNamedModel("foo", ontologie);
-			dataset.commit();
-			dataset.end();
-			/*try
-			{
-				for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
-				{
-					fichierSortie.write(s.toString().getBytes());
-					fichierSortie.write("\n".getBytes());
-
-					//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
-				}
-				fichierSortie.close();
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}*/
-
-		}
+	}
 
 }

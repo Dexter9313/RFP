@@ -23,79 +23,79 @@ import org.apache.jena.query.ReadWrite;
 
 public class OntoExcel extends Onto
 {
-		String DocumentCreator;
-		String Creationdate;
-		String LastModif;
-		String LastModifC;
-		String Description;
-		String Keywords;
-		String Title;
-		String Subject;
-		String Category;
-		String Company;
-		String Template;
-		String Manager;
-		String FileExcelInit;
+	String DocumentCreator;
+	String Creationdate;
+	String LastModif;
+	String LastModifC;
+	String Description;
+	String Keywords;
+	String Title;
+	String Subject;
+	String Category;
+	String Company;
+	String Template;
+	String Manager;
+	String FileExcelInit;
 
-		public OntoExcel(String namespace, String FileExcel)
+	public OntoExcel(String namespace, String FileExcel)
+	{
+		super(namespace);
+
+		FileExcelInit = FileExcel;
+
+		try
 		{
-			super(namespace);
-
-			FileExcelInit = FileExcel;
-
-			try
-			{
-				ExcelFileExtractor ExcelFile
-					= new ExcelFileExtractor(FileExcelInit);
-				ExcelFile.MetadataExtractor();
-				DocumentCreator = ExcelFile.DocumentCreator;
-				Creationdate    = ExcelFile.Creationdate;
-				LastModif       = ExcelFile.LastModif;
-				LastModifC      = ExcelFile.LastModifC;
-				Description     = ExcelFile.Description;
-				Keywords        = ExcelFile.Keywords;
-				Title           = ExcelFile.Title;
-				Subject         = ExcelFile.Subject;
-				Category        = ExcelFile.Company;
-				Company         = ExcelFile.Company;
-				Template        = ExcelFile.Template;
-				Manager         = ExcelFile.Manager;
-			}
-			catch(IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			ExcelFileExtractor ExcelFile
+				= new ExcelFileExtractor(FileExcelInit);
+			ExcelFile.MetadataExtractor();
+			DocumentCreator = ExcelFile.DocumentCreator;
+			Creationdate    = ExcelFile.Creationdate;
+			LastModif       = ExcelFile.LastModif;
+			LastModifC      = ExcelFile.LastModifC;
+			Description     = ExcelFile.Description;
+			Keywords        = ExcelFile.Keywords;
+			Title           = ExcelFile.Title;
+			Subject         = ExcelFile.Subject;
+			Category        = ExcelFile.Company;
+			Company         = ExcelFile.Company;
+			Template        = ExcelFile.Template;
+			Manager         = ExcelFile.Manager;
 		}
-
-		@Override
-		protected void convert()
+		catch(IOException e)
 		{
-			CreateNewClass("Document", "CreatedBy", "Document", "no");
-			CreateNewClass("Auteur", "CreatorOf", "Auteur", "Document");
-			// Onto.CreateNewExceClass("Document", "ModifiedBy", "Document",
-			// "Auteur");
-			CreateNewClass("Title", "TitleOf", "Title", "Document");
-			CreateNewClass("Description", "DescriptionOf", "Description",
-							   "Document");
-			CreateNewClass("Subject", "Concern", "Subject", "Document");
-			CreateNewClass("Category", "hasDocument", "Category",
-							   "Document");
-			CreateNewClass("Manager", "ManageSubject", "Manager",
-							   "Subject");
-			CreateNewClass("Company", "hasasetof", "Company", "Document");
-			// Onto.CreateNewExceClass("Company", "hasasetof", "Company",
-			// "Template");
-			CreateNewClass("Date", "CreationDateOf", "Date", "Document");
-
-			CreatNewIndiv("Document", FileExcelInit);
-			CreatNewIndiv("Auteur", DocumentCreator);
-			CreatNewIndiv("Title", Title);
-			CreatNewIndiv("Description", Description);
-			CreatNewIndiv("Subject", Subject);
-			CreatNewIndiv("Category", Category);
-			CreatNewIndiv("Manager", Manager);
-			CreatNewIndiv("Company", Company);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	}
+
+	@Override
+	protected void convert()
+	{
+		CreateNewClass("Document", "CreatedBy", "Document", "no");
+		CreateNewClass("Auteur", "CreatorOf", "Auteur", "Document");
+		// Onto.CreateNewExceClass("Document", "ModifiedBy", "Document",
+		// "Auteur");
+		CreateNewClass("Title", "TitleOf", "Title", "Document");
+		CreateNewClass("Description", "DescriptionOf", "Description",
+					   "Document");
+		CreateNewClass("Subject", "Concern", "Subject", "Document");
+		CreateNewClass("Category", "hasDocument", "Category",
+					   "Document");
+		CreateNewClass("Manager", "ManageSubject", "Manager",
+					   "Subject");
+		CreateNewClass("Company", "hasasetof", "Company", "Document");
+		// Onto.CreateNewExceClass("Company", "hasasetof", "Company",
+		// "Template");
+		CreateNewClass("Date", "CreationDateOf", "Date", "Document");
+
+		CreatNewIndiv("Document", FileExcelInit);
+		CreatNewIndiv("Auteur", DocumentCreator);
+		CreatNewIndiv("Title", Title);
+		CreatNewIndiv("Description", Description);
+		CreatNewIndiv("Subject", Subject);
+		CreatNewIndiv("Category", Category);
+		CreatNewIndiv("Manager", Manager);
+		CreatNewIndiv("Company", Company);
+	}
 
 }
