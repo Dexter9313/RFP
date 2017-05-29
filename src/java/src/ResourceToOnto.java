@@ -17,7 +17,7 @@ public class ResourceToOnto
 			OntoExcel onto = new OntoExcel("http://www.ontologie.fr/monOntologie#",
 										   args[1]);
 			onto.convert();
-			onto.persist(args[1] + ".rdf");
+			onto.persist(args[1] + ".owl");
 		}
 		else if(args[0].equals("--db"))
 		{
@@ -34,7 +34,7 @@ public class ResourceToOnto
 										 userName,
 										 password);
 				onto.convert();
-				onto.persist(args[1] + ".rdf");
+				onto.persist(args[1] + ".owl");
 			}
 			catch(FileNotFoundException e)
 			{
@@ -47,7 +47,7 @@ public class ResourceToOnto
 			OntoHTML onto = new OntoHTML("http://www.ontologie.fr/monOntologie#",
 										   args[1]);
 			onto.convert();
-			onto.persist(args[1] + ".rdf");
+			onto.persist(args[1] + ".owl");
 		}
 		else if(args[0].equals("--service"))
 		{
