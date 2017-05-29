@@ -12,8 +12,6 @@ public class ResourceToOnto
 	 * args[1] = resource path */
 	public static void main(String[] args)
 	{
-		System.out.println(args[0]);
-
 		if(args[0].equals("--excel"))
 		{
 			OntoExcel onto = new OntoExcel("http://www.ontologie.fr/monOntologie#",
@@ -53,6 +51,10 @@ public class ResourceToOnto
 		{
 			/* TODO : implement OntoService */
 			String foo = args[0];
+		}
+		else
+		{
+			System.out.println("USAGE :\nResourceToOnto TYPE FILE_PATH\n\tTYPE : --excel|--db|--html|--service");
 		}
 	}
 }
