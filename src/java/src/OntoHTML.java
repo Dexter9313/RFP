@@ -86,56 +86,50 @@ public class OntoHTML extends Onto
 	@Override
 	protected void convert()
 	{
-		//TODO Do right classes
-		CreateNewHTMLClass("Document", "CreatedBy", "Document", "no");
-		CreateNewHTMLClass("Auteur", "CreatorOf", "Auteur", "Document");
-		// Onto.CreateNewHTMLClass("Document", "ModifiedBy", "Document",
-		// "Auteur");
-		CreateNewHTMLClass("Title", "TitleOf", "Title", "Document");
-		CreateNewHTMLClass("Description", "DescriptionOf", "Description",
-						   "Document");
-		CreateNewHTMLClass("Subject", "Concern", "Subject", "Document");
-		CreateNewHTMLClass("Category", "hasDocument", "Category",
-						   "Document");
-		CreateNewHTMLClass("Manager", "ManageSubject", "Manager",
-						   "Subject");
-		CreateNewHTMLClass("Company", "hasasetof", "Company", "Document");
-		// Onto.CreateNewHTMLClass("Company", "hasasetof", "Company",
-		// "Template");
-		CreateNewHTMLClass("Date", "CreationDateOf", "Date", "Document");
+		CreateNewClass("Document", "CreatedBy", "Document", "no");
+		CreateNewClass("Coverage", "CoveredBy", "Converage", "Document");
+		CreateNewClass("Author", "CreatorOf", "Author", "Document");
+		CreateNewClass("Date", "CreationDateOf", "Date", "Document");
+		CreateNewClass("Description", "DescriptionOf", "Description", "Document");
+		CreateNewClass("Format", "FormatOf", "Format",
+					   "Document");
+		CreateNewClass("Identifier", "IdentifierOf", "Identifier",
+					   "Document");
+		CreateNewClass("Language", "LanguageOf", "Language",
+					   "Document");
+		CreateNewClass("ModifiedDate", "ModifiedDateOf", "ModifiedDate",
+					   "Document");
+		CreateNewClass("Publisher", "PublisherOf", "Publisher",
+					   "Document");
+		CreateNewClass("Relation", "RelationOf", "Relation",
+					   "Document");
+		CreateNewClass("Rights", "RightsOf", "Rights",
+					   "Document");
+		CreateNewClass("Source", "SourceOf", "Source",
+					   "Document");
+		CreateNewClass("Keywords", "KeywordsOf", "Keywords",
+					   "Document");
+		CreateNewClass("Title", "TitleOf", "Title",
+					   "Document");
+		CreateNewClass("Type", "TypeOf", "Type",
+					   "Document");
 
-		CreatNewHTMLIndiv("Document", FileHTMLInit);
-		//TODO instanciate right instances
-		/*CreatNewHTMLIndiv("Auteur", DocumentCreator);
-		CreatNewHTMLIndiv("Title", Title);
-		CreatNewHTMLIndiv("Description", Description);
-		CreatNewHTMLIndiv("Subject", Subject);
-		CreatNewHTMLIndiv("Category", Category);
-		CreatNewHTMLIndiv("Manager", Manager);
-		CreatNewHTMLIndiv("Company", Company);*/
-	}
-
-	public void CreateNewHTMLClass(String ClassName, String Prop, String Dom,
-								   String Ran)
-	{
-		ontologie.createClass(namespace + ClassName);
-		ObjectProperty newProp
-			= ontologie.createObjectProperty(namespace + Prop);
-		OntClass Domain = ontologie.getOntClass(namespace + Dom);
-		// set Domain and Rang
-		newProp.setDomain(Domain);
-
-		if(Ran != "no")
-		{
-			OntClass Rang = ontologie.getOntClass(namespace + Ran);
-			newProp.setRange(Rang);
-		}
-	}
-
-	public void CreatNewHTMLIndiv(String ClassName, String Indiv)
-	{
-		OntClass Cname = ontologie.getOntClass(namespace + ClassName);
-		ontologie.createIndividual(namespace + Indiv, Cname);
+		CreateNewIndiv("Document", FileHTMLInit);
+		CreateNewIndiv("Coverage", Coverage);
+		CreateNewIndiv("Author", Creator);
+		CreateNewIndiv("Date", Date);
+		CreateNewIndiv("Description", Description);
+		CreateNewIndiv("Format", Format);
+		CreateNewIndiv("Identifier", Identifier);
+		CreateNewIndiv("Language", Language);
+		CreateNewIndiv("ModifiedDate", Modified);
+		CreateNewIndiv("Publisher", Publisher);
+		CreateNewIndiv("Relation", Relation);
+		CreateNewIndiv("Rights", Rights);
+		CreateNewIndiv("Source", Source);
+		CreateNewIndiv("Keywords", Keywords);
+		CreateNewIndiv("Title", Title);
+		CreateNewIndiv("Type", Type);
 	}
 
 }
