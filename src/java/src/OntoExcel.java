@@ -89,14 +89,14 @@ public class OntoExcel extends Onto
 		// "Template");
 		CreateNewClass("Date", "CreationDateOf", "Date", "Document");
 
-		CreatNewIndiv("Document", FileExcelInit);
-		CreatNewIndiv("Auteur", DocumentCreator);
-		CreatNewIndiv("Title", Title);
-		CreatNewIndiv("Description", Description);
-		CreatNewIndiv("Subject", Subject);
-		CreatNewIndiv("Category", Category);
-		CreatNewIndiv("Manager", Manager);
-		CreatNewIndiv("Company", Company);
+		CreateNewIndiv("Document", FileExcelInit);
+		CreateNewIndiv("Auteur", DocumentCreator);
+		CreateNewIndiv("Title", Title);
+		CreateNewIndiv("Description", Description);
+		CreateNewIndiv("Subject", Subject);
+		CreateNewIndiv("Category", Category);
+		CreateNewIndiv("Manager", Manager);
+		CreateNewIndiv("Company", Company);
 	}
 
 }
