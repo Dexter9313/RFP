@@ -40,7 +40,7 @@ public abstract class Onto
 		//left out comments are legacy ways of doing, soon to be deleted
 		public void persist(String fileName)
 		{
-			/*FileOutputStream fichierSortie = null;
+			FileOutputStream fichierSortie = null;
 
 			try
 			{
@@ -49,17 +49,17 @@ public abstract class Onto
 			catch(FileNotFoundException ex)
 			{
 				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-			}*/
+			}
 
 
 			//ontologie.write(fichierSortie, "N3");
 			//GraphTripleStore graph = new GraphTripleStore(null);
-			Dataset dataset = TDBFactory.createDataset("uploads/dataset");
-			dataset.begin(ReadWrite.WRITE);
-			dataset.addNamedModel("foo", ontologie);
-			dataset.commit();
-			dataset.end();
-			/*try
+			//Dataset dataset = TDBFactory.createDataset("uploads/dataset");
+			//dataset.begin(ReadWrite.WRITE);
+			//dataset.addNamedModel("foo", ontologie);
+			//dataset.commit();
+			//dataset.end();
+			try
 			{
 				for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
 				{
@@ -73,7 +73,7 @@ public abstract class Onto
 			catch(IOException e)
 			{
 				e.printStackTrace();
-			}*/
+			}
 
 		}
 }

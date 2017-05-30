@@ -48,7 +48,10 @@ public class ResourceToOnto
         }
         else if(args[0].equals("--service"))
         {
-            /* TODO : implement OntoService */
+            OntoWebService onto = new OntoWebService("http://www.ontologie.fr/monOntologie#",
+                args[1]);
+            onto.convert();
+            onto.pesist(args[1] + ".rdf");
             String foo = args[0];
         }
     }
