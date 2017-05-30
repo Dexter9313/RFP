@@ -51,8 +51,10 @@ public class ResourceToOnto
         }
         else if(args[0].equals("--service"))
         {
-            /* TODO : implement OntoService */
-            String foo = args[0];
+            OntoWebService onto = new OntoWebService("http://www.ontologie.fr/monOntologie#",
+                                         args[1]);
+            onto.convert();
+            onto.persist(args[1] + ".owl");
         }
         else
         {
