@@ -61,22 +61,23 @@ public class OntoHTML extends Onto
 			htmlParser.parse(fis, new DefaultHandler(), metadata, new ParseContext());
 			fis.close();
 
-			String Contributor = metadata.get(TikaCoreProperties.CONTRIBUTOR);
-			String Coverage = metadata.get(TikaCoreProperties.COVERAGE);
-			String Creator = metadata.get(TikaCoreProperties.CREATOR);
-			String Date = metadata.get(TikaCoreProperties.CREATED);
-			String Description = metadata.get(TikaCoreProperties.DESCRIPTION);
-			String Format = metadata.get(TikaCoreProperties.FORMAT);
-			String Identifier = metadata.get(TikaCoreProperties.IDENTIFIER);
-			String Language = metadata.get(TikaCoreProperties.LANGUAGE);
-			String Modified = metadata.get(TikaCoreProperties.MODIFIED);
-			String Publisher = metadata.get(TikaCoreProperties.PUBLISHER);
-			String Relation = metadata.get(TikaCoreProperties.RELATION);
-			String Rights = metadata.get(TikaCoreProperties.RIGHTS);
-			String Source = metadata.get(TikaCoreProperties.SOURCE);
-			String Keywords = metadata.get(TikaCoreProperties.KEYWORDS);
-			String Title = metadata.get(TikaCoreProperties.TITLE);
-			String Type = metadata.get(TikaCoreProperties.TYPE);
+			Contributor = metadata.get(metadata.CONTRIBUTOR);
+			Coverage = metadata.get(metadata.COVERAGE);
+			Creator = metadata.get("author");
+			Date = metadata.get(metadata.DATE);
+			Description = metadata.get(metadata.DESCRIPTION);
+			Format = metadata.get(metadata.FORMAT);
+			Identifier = metadata.get(metadata.IDENTIFIER);
+			Language = metadata.get(metadata.LANGUAGE);
+			Modified = metadata.get(metadata.MODIFIED);
+			Publisher = metadata.get(metadata.PUBLISHER);
+			Relation = metadata.get(metadata.RELATION);
+			Rights = metadata.get(metadata.RIGHTS);
+			Source = metadata.get(metadata.SOURCE);
+			Keywords = metadata.get("keywords");
+			Title = metadata.get(metadata.TITLE);
+			Type = metadata.get(metadata.TYPE);
+
 		}
 		catch(Exception e)
 		{
