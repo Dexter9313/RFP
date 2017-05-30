@@ -23,57 +23,81 @@ import org.apache.jena.query.ReadWrite;
 
 public abstract class Onto
 {
-		OntModel ontologie;
-		String namespace;
+	OntModel ontologie;
+	String namespace;
 
-		public Onto(String namespace)
+	public Onto(String namespace)
+	{
+		ontologie = ModelFactory.createOntologyModel();
+		ontologie.createOntology(namespace);
+		this.namespace = namespace;
+	}
+
+	//actual method which does the convertion rsc->onto
+	protected abstract void convert();
+
+	protected void CreateNewClass(String ClassName, String Prop, String Dom,
+								  String Ran)
+	{
+		ontologie.createClass(namespace + ClassName);
+		ObjectProperty newProp
+			= ontologie.createObjectProperty(namespace + Prop);
+		OntClass Domain = ontologie.getOntClass(namespace + Dom);
+		// set Domain and Rang
+		newProp.setDomain(Domain);
+
+		if(Ran != "no")
 		{
-			ontologie = ModelFactory.createOntologyModel();
-			ontologie.createOntology(namespace);
-			this.namespace = namespace;
+			OntClass Rang = ontologie.getOntClass(namespace + Ran);
+			newProp.setRange(Rang);
+		}
+	}
+
+	protected void CreateNewIndiv(String ClassName, String Indiv)
+	{
+		OntClass Cname = ontologie.getOntClass(namespace + ClassName);
+		ontologie.createIndividual(namespace + Indiv, Cname);
+	}
+
+	//left out comments are legacy ways of doing, soon to be deleted
+	public void persist(String fileName)
+	{
+		FileOutputStream fichierSortie = null;
+
+		try
+		{
+			fichierSortie = new FileOutputStream(new File(fileName));
+		}
+		catch(FileNotFoundException ex)
+		{
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
-		//actual method which does the convertion rsc->onto
-		protected abstract void convert();
 
+		ontologie.write(fichierSortie);
 
-		//left out comments are legacy ways of doing, soon to be deleted
-		public void persist(String fileName)
+		//GraphTripleStore graph = new GraphTripleStore(null);
+		/*Dataset dataset = TDBFactory.createDataset("uploads/dataset");
+		dataset.begin(ReadWrite.WRITE);
+		dataset.addNamedModel("foo", ontologie);
+		dataset.commit();
+		dataset.end();*/
+		try
 		{
-			FileOutputStream fichierSortie = null;
-
-			try
+			/*for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
 			{
-				fichierSortie = new FileOutputStream(new File(fileName));
-			}
-			catch(FileNotFoundException ex)
-			{
-				Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-			}
+				fichierSortie.write(s.toString().getBytes());
+				fichierSortie.write("\n".getBytes());
 
-
-			//ontologie.write(fichierSortie, "N3");
-			//GraphTripleStore graph = new GraphTripleStore(null);
-			//Dataset dataset = TDBFactory.createDataset("uploads/dataset");
-			//dataset.begin(ReadWrite.WRITE);
-			//dataset.addNamedModel("foo", ontologie);
-			//dataset.commit();
-			//dataset.end();
-			try
-			{
-				for(Statement s : ontologie.listStatements(null, null, (RDFNode)null).toList())
-				{
-					fichierSortie.write(s.toString().getBytes());
-					fichierSortie.write("\n".getBytes());
-
-					//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
-				}
-				fichierSortie.close();
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-
+				//graph.add(new Triple(s.getObject().asNode(), s.getPredicate().asNode(), s.getResource().asNode()));
+			}*/
+			fichierSortie.close();
 		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
 }
