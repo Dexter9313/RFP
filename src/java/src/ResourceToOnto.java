@@ -45,7 +45,7 @@ public class ResourceToOnto
 		else if(args[0].equals("--html"))
 		{
 			OntoHTML onto = new OntoHTML("http://www.ontologie.fr/monOntologie#",
-										   args[1]);
+										 args[1]);
 			onto.convert();
 			onto.persist(args[1] + ".owl");
 		}

@@ -75,6 +75,7 @@ public abstract class Onto
 
 
 		ontologie.write(fichierSortie);
+
 		//GraphTripleStore graph = new GraphTripleStore(null);
 		/*Dataset dataset = TDBFactory.createDataset("uploads/dataset");
 		dataset.begin(ReadWrite.WRITE);
