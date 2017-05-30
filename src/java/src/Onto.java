@@ -55,8 +55,9 @@ public abstract class Onto
 
     protected void CreateNewIndiv(String ClassName, String Indiv)
     {
-        OntClass Cname = ontologie.getOntClass(namespace + ClassName);
-        ontologie.createIndividual(namespace + Indiv, Cname);
+        //FIXME alignment is bugged because of individuals
+        /*OntClass Cname = ontologie.getOntClass(namespace + ClassName);
+        ontologie.createIndividual(namespace + Indiv, Cname);*/
     }
 
     //left out comments are legacy ways of doing, soon to be deleted
