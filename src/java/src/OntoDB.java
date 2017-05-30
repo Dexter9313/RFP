@@ -5,6 +5,7 @@ import org.apache.jena.iri.impl.Main;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.CardinalityRestriction;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
@@ -49,14 +50,26 @@ public class OntoDB extends Onto
             System.out.println("Effective connection !");
             DatabaseMetaData dmd = conn.getMetaData();
 
-            // First we create the concepts related to tables
+
+            // First we create the individual representing the database
+            OntClass dbClass = ontologie.createClass(namespace + "database");
+            ontologie.createIndividual(namespace + url, dbClass);
+
+            ObjectProperty isInDB = ontologie.createObjectProperty(namespace + "isIn");
+            CardinalityRestriction restriction = ontologie.createCardinalityRestriction(null, isInDB, 1);
+            isInDB.setRange(dbClass);
+
+
+            // Next we create the concepts related to tables
             ResultSet tables = dmd.getTables(conn.getCatalog(), null, "%", null);
 
             while(tables.next())
             {
                 // For each table, we create a concept in the ontology
                 String nameTable = tables.getString("TABLE_NAME");
-                ontologie.createClass(namespace + nameTable);
+                OntClass tableClass = ontologie.createClass(namespace + nameTable);
+
+                tableClass.setSuperClass(restriction);
             }
 
             // We will store all key names in a list in order to deduce which column is not a key
