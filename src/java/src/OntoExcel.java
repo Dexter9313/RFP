@@ -37,14 +37,14 @@ public class OntoExcel extends Onto
     String Template;
     String Manager;
     String FileExcelInit;
-	String FileURI;
+    String FileURI;
 
     public OntoExcel(String namespace, String FileExcel, String FileURI)
     {
         super(namespace);
 
         FileExcelInit = FileExcel;
-		this.FileURI = FileURI;
+        this.FileURI = FileURI;
 
         try
         {

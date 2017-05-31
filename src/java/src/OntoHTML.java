@@ -46,14 +46,14 @@ public class OntoHTML extends Onto
     String Title;
     String Type;
     String FileHTMLInit;
-	String FileURI;
+    String FileURI;
 
     public OntoHTML(String namespace, String FileHTML, String FileURI)
     {
         super(namespace);
 
         FileHTMLInit = FileHTML;
-		this.FileURI = FileURI;
+        this.FileURI = FileURI;
 
         try
         {
