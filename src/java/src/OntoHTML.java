@@ -46,12 +46,14 @@ public class OntoHTML extends Onto
     String Title;
     String Type;
     String FileHTMLInit;
+	String FileURI;
 
-    public OntoHTML(String namespace, String FileHTML)
+    public OntoHTML(String namespace, String FileHTML, String FileURI)
     {
         super(namespace);
 
         FileHTMLInit = FileHTML;
+		this.FileURI = FileURI;
 
         try
         {
@@ -117,7 +119,7 @@ public class OntoHTML extends Onto
         CreateNewClass("Type", "TypeOf", "Type",
                        "Document");
 
-        CreateNewIndiv("Document", FileHTMLInit);
+        CreateNewIndiv("Document", FileURI);
         CreateNewIndiv("Coverage", Coverage);
         CreateNewIndiv("Author", Creator);
         CreateNewIndiv("Date", Date);

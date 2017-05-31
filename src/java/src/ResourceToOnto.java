@@ -15,7 +15,7 @@ public class ResourceToOnto
         if(args[0].equals("--excel"))
         {
             OntoExcel onto = new OntoExcel("http://www.ontologie.fr/monOntologie#",
-                                           args[1]);
+                                           args[1], args[2]);
             onto.convert();
             onto.persist(args[1] + ".owl");
         }
@@ -45,7 +45,7 @@ public class ResourceToOnto
         else if(args[0].equals("--html"))
         {
             OntoHTML onto = new OntoHTML("http://www.ontologie.fr/monOntologie#",
-                                         args[1]);
+                                         args[1], args[2]);
             onto.convert();
             onto.persist(args[1] + ".owl");
         }
