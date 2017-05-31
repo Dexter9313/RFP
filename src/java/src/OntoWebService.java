@@ -56,6 +56,12 @@ public class OntoWebService extends Onto {
             CardinalityRestriction restrictionOutput = ontologie.createCardinalityRestriction(null, isOutputParameterFrom, 1);
             isOutputParameterFrom.setRange(wsClassName);
 
+            // Operations provided by the service
+            OntClass operation = ontologie.createClass(namespace + "operation");
+            ObjectProperty isOperationFrom = ontologie.createObjectProperty(namespace + "isOperationFrom");
+            CardinalityRestriction restrictionOperation = ontologie.createCardinalityRestriction(null, isOperationFrom, 1);
+            isOperationFrom.setRange(wsClassName);
+
 
 
 
@@ -91,6 +97,15 @@ public class OntoWebService extends Onto {
                                 }
                             }
                             isInput = false;
+                        }
+                        if(tempNode.getNodeName().equals("portType")) {
+                            NodeList nList2 = tempNode.getChildNodes();
+                            for(int count2 = 0; count2 < nList2.getLength(); count2++) {
+                                if(nList2.item(count2).getNodeType() == Node.ELEMENT_NODE) {
+                                    Element tempNode2 = (Element) nList2.item(count2);
+                                    ontologie.createIndividual(namespace + tempNode2.getAttribute("name"), operation);
+                                }
+                            }
                         }
                     }
                 }
