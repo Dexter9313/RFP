@@ -46,7 +46,8 @@ function showService()
 	<div id="excel_div">
 	<form action="uploadExcel.php" method="post" enctype="multipart/form-data">
 	Select resource to reference:<br/>
-	<input type="file" name="fileToUpload" id="fileToUpload"></br/>
+	<input type="file" name="fileToUpload" id="fileToUpload"><br/>
+	Resource URI : <input type="text" name="uri" id="uri"><br/>
 
 	<input type="submit" value="Reference This Resource" name="submit">
 
@@ -75,7 +76,8 @@ function showService()
 	<div id="html_div">
 	<form action="uploadHTML.php" method="post" enctype="multipart/form-data">
 	Select HTML resource to reference:<br/>
-	<input type="file" name="fileToUpload" id="fileToUpload"></br/>
+	<input type="file" name="fileToUpload" id="fileToUpload"><br/>
+	Resource URI : <input type="text" name="uri" id="uri"><br/>
 	<input type="submit" value="Reference This Resource" name="submit">
 
 	</form>
