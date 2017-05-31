@@ -40,10 +40,17 @@ public class OntoWebService extends Onto {
 
             doc.getDocumentElement().normalize();
 
+            // Creation of classes and properties
+            OntClass wsClassName = ontologie.createClass(namespace + "webServiceName");
+            OntClass inputParameter = ontologie.createClass(namespace + "inputParameter");
+            OntClass outputParameter = ontologie.createClass(namespace + "outputParameter");
+
             // First we get the name of the web service
             String wsName = doc.getDocumentElement().getAttribute("name");
-            OntClass wsClassName = ontologie.createClass(namespace + "webServiceName");
             ontologie.createIndividual(namespace + wsName, wsClassName);
+
+            while(doc.hasChildNodes()){
+            }
 
             System.out.println("Ontologie creation succeed !!!");
         }
