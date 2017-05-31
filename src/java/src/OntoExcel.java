@@ -37,12 +37,14 @@ public class OntoExcel extends Onto
     String Template;
     String Manager;
     String FileExcelInit;
+	String FileURI;
 
-    public OntoExcel(String namespace, String FileExcel)
+    public OntoExcel(String namespace, String FileExcel, String FileURI)
     {
         super(namespace);
 
         FileExcelInit = FileExcel;
+		this.FileURI = FileURI;
 
         try
         {
@@ -89,7 +91,7 @@ public class OntoExcel extends Onto
         // "Template");
         CreateNewClass("Date", "CreationDateOf", "Date", "Document");
 
-        CreateNewIndiv("Document", FileExcelInit);
+        CreateNewIndiv("Document", FileURI);
         CreateNewIndiv("Auteur", DocumentCreator);
         CreateNewIndiv("Title", Title);
         CreateNewIndiv("Description", Description);
