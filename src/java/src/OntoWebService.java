@@ -33,16 +33,21 @@ public class OntoWebService extends Onto {
 
     public void convert() {
         try {
-            File wsdlFile = newFile(wsdlFileName);
-            DocumentBuilderFactory = DocumetnBuilderFactory.newInstance();
+            File wsdlFile = new File(wsdlFileName);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = dBuilder.parse(wsdlFile);
 
             doc.getDocumentElement().normalize();
 
+            // First we get the name of the web service
+            String wsName = doc.getDocumentElement().getAttribute("name");
+            OntClass wsClassName = ontologie.createClass(namespace + "webServiceName");
+            ontologie.createIndividual(namespace + wsName, wsClassName);
 
+            System.out.println("Ontologie creation succeed !!!");
         }
-        catch(Exeption e) {
+        catch(Exception e) {
             e.printStackTrace();
         }
     }
