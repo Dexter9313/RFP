@@ -52,7 +52,7 @@ public class ResourceToOnto
         else if(args[0].equals("--service"))
         {
             OntoWebService onto = new OntoWebService("http://www.ontologie.fr/monOntologie#",
-                    args[1]);
+                    args[1], args[2]);
             onto.convert();
             onto.persist(args[1] + ".owl");
         }

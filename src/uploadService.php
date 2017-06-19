@@ -1,4 +1,6 @@
 <?php
+include('align.php');
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -27,7 +29,8 @@ if ($uploadOk == 0) {
 	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		echo "The resource ". basename( $_FILES["fileToUpload"]["name"]). " has been referenced.";
 		echo '<form action="index.php"><input type="submit" value="Go Back" /></form>';
-		exec('java -cp "java/bin/:java/lib/poi-3.15/*:java/lib/apache-jena-3.2.0/lib/*:java/lib/poi-3.15/ooxml-lib/*:java/lib/poi-3.15/lib/*:java/lib/tika-1.14/*" rfp.ResourceToOnto --service "uploads/' . basename( $_FILES["fileToUpload"]["name"]) . '" > java-debug.log');
+		exec('java -cp "java/bin/:java/lib/poi-3.15/*:java/lib/apache-jena-3.2.0/lib/*:java/lib/poi-3.15/ooxml-lib/*:java/lib/poi-3.15/lib/*:java/lib/tika-1.14/*" rfp.ResourceToOnto --service "uploads/' . basename( $_FILES["fileToUpload"]["name"]) . '" "' . $_POST["uri"] . '" > java-debug.log');
+		align($target_file . '.owl');
 		unlink($target_file);
 	} else {
 		echo "Sorry, there was an error uploading your resource.";

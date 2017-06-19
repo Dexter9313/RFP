@@ -26,10 +26,12 @@ import org.apache.jena.query.ReadWrite;
 public class OntoWebService extends Onto {
 
     String wsdlFileName;
+	String FileURI;
 
-    public OntoWebService(String namespace, String wsdlFileName) {
+    public OntoWebService(String namespace, String wsdlFileName, String URI) {
         super(namespace);
         this.wsdlFileName = wsdlFileName;
+        this.FileURI = FileURI;
     }
 
     public void convert() {
@@ -45,6 +47,8 @@ public class OntoWebService extends Onto {
 
             // Name of the service
             OntClass wsClassName = ontologie.createClass(namespace + "webServiceName");
+            CreateNewClass("URI", "hasURI", "URI", "webServiceName");
+			CreateNewIndiv("URI", FileURI);
 
             // Parameters of the service
             OntClass inputParameter = ontologie.createClass(namespace + "inputParameter");

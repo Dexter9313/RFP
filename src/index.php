@@ -88,6 +88,7 @@ function showService()
         <form action="uploadService.php" method="post" enctype="multipart/form-data">
         Select web service description file<br/>
 	<input type="file" name="fileToUpload" id="fileToUpload"></br/>
+	Resource URI : <input type="text" name="uri" id="uri"><br/>
 	<input type="submit" value="Reference This Resource" name="submit">
         
         </form>
